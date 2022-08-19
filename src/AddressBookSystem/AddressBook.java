@@ -81,7 +81,15 @@ public class AddressBook {
 			}
 		}	
 		
-	}	
+	}
+	
+	/*
+	 * For deleting the array elements
+	 */
+	public void deleteContact() {
+		listOfContacts.clear();
+	}
+	
 	/*
 	 * Displaying all contacts
 	 */
@@ -98,6 +106,8 @@ public class AddressBook {
 			
 		}
 	}
+	
+	
 	
 
 }
