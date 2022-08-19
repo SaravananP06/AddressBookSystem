@@ -18,6 +18,11 @@ public class AddressBookMain {
 		 * Calling displayContacts method
 		 */
 		objAddressBook.displayContacts();	
+		/*
+		 * Calling to editContact method
+		 */
+		objAddressBook.editContact();
+		objAddressBook.displayContacts();
 	}
-
+	
 }

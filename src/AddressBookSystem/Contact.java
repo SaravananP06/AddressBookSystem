@@ -9,4 +9,5 @@ public class Contact {
 	int zip;
 	long phoneNumber;
 	String email;
+	
 }
