@@ -13,12 +13,23 @@ public class AddressBookMain {
 		Scanner sc = new Scanner(System.in);
 		
 		AddressBook objAddressBook = new AddressBook();
-		System.out.println("Create New Contact");
-		
-		/*
-		 * Calling createContact method
-		 */
-		objAddressBook.createContact();
+		System.out.println("Enter how many contacts to wanted to add it: ");
+		int contacts = sc.nextInt();
+		int n = 0;
+		while(n < contacts) {
+			n++;
+			System.out.println("Create New Contact");
+			
+			/*
+			 * Calling createContact method
+			 */
+			objAddressBook.createContact();
+			
+			/*
+			 * Calling displayContacts method
+			 */
+			objAddressBook.displayContacts();
+			}
 		System.out.println("Enter \n1.to Edit contact: \n2.delete contact: ");
 		int choice = sc.nextInt();
 		switch (choice) {

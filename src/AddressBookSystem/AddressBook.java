@@ -7,45 +7,44 @@ import java.util.Scanner;
  * Class is used for storing all the contact details
  */
 public class AddressBook {
-	Scanner sc = new Scanner(System.in);
-	ArrayList<Contact> listOfContacts = new ArrayList<Contact>();
+	
+	ArrayList<Contact> listOfContacts = new ArrayList<Contact>(10);
 	
 	/*
 	 * Added contact into a list
 	 */
 	public void createContact() {
-		  
-			Contact objContact = new Contact();
-			
-			System.out.print("Enter First Name: ");
-			objContact.firstName = sc.nextLine();
-			
-			System.out.print("Enter Last Name: ");
-			objContact.lastName = sc.nextLine();
-			
-			System.out.print("Enter Address: ");
-			objContact.address = sc.nextLine();
-			
-			System.out.print("Enter City: ");
-			objContact.city = sc.nextLine();
-			
-			System.out.print("Enter State: ");
-			objContact.state = sc.nextLine();
-			
-			System.out.print("Enter Email ID: ");
-			objContact.email = sc.nextLine();
-			
-			System.out.print("Enter Zip: ");
-			objContact.zip = sc.nextInt();
-			
-			System.out.print("Enter Phone Number: ");
-			objContact.phoneNumber = sc.nextLong();
-			
-			listOfContacts.add(objContact);
+		Scanner sc = new Scanner(System.in);
+		Contact objContact = new Contact();
+		System.out.print("Enter First Name: ");
+		objContact.firstName = sc.nextLine();
+		
+		System.out.print("Enter Last Name: ");
+		objContact.lastName = sc.nextLine();
+		
+		System.out.print("Enter Address: ");
+		objContact.address = sc.nextLine();
+		
+		System.out.print("Enter City: ");
+		objContact.city = sc.nextLine();
+		
+		System.out.print("Enter State: ");
+		objContact.state = sc.nextLine();
+		
+		System.out.print("Enter Email ID: ");
+		objContact.email = sc.nextLine();
+		
+		System.out.print("Enter Zip: ");
+		objContact.zip = sc.nextInt();
+		
+		System.out.print("Enter Phone Number: ");
+		objContact.phoneNumber = sc.nextLong();
+		
+		listOfContacts.add(objContact);	
 		
 	}
-	
 	public void editContact() {
+		Scanner sc = new Scanner(System.in);
 		sc.nextLine();
 		System.out.println("Enter details to edit contact: ");
 		System.out.print("Enter First Name : ");
@@ -87,8 +86,23 @@ public class AddressBook {
 	 * For deleting the array elements
 	 */
 	public void deleteContact() {
-		listOfContacts.clear();
+		Scanner sc = new Scanner(System.in);
+		sc.nextLine();
+		System.out.println("Enter details to delete contact: ");
+		System.out.print("Enter First Name : ");
+		String fName = sc.nextLine();
+		
+		for (int i = 0; i<listOfContacts.size(); i++) {
+			System.out.println("Searching... ");
+			String strFirstName = listOfContacts.get(i).firstName.toUpperCase().trim();
+			if (strFirstName.equals(fName.toUpperCase().trim())) {
+				listOfContacts.remove(i);
+			}
+			}
+		
 	}
+	
+	
 	
 	/*
 	 * Displaying all contacts
