@@ -1,14 +1,13 @@
 package AddressBookSystem;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Scanner;
 
 /*
  * Class is used for storing all the contact details
  */
 public class AddressBook {
-	
-	ArrayList<Contact> listOfContacts = new ArrayList<Contact>(10);
+	HashMap<String,Contact> HPOfContacts = new HashMap<String,Contact>();
 	
 	/*
 	 * Added contact into a list
@@ -40,12 +39,12 @@ public class AddressBook {
 		System.out.print("Enter Phone Number: ");
 		objContact.phoneNumber = sc.nextLong();
 		
-		listOfContacts.add(objContact);	
+		String key = objContact.firstName + " " + objContact.lastName;
+		HPOfContacts.put(key,objContact);
 		
 	}
 	public void editContact() {
 		Scanner sc = new Scanner(System.in);
-		sc.nextLine();
 		System.out.println("Enter details to edit contact: ");
 		System.out.print("Enter First Name : ");
 		String firstName = sc.nextLine();
@@ -53,32 +52,29 @@ public class AddressBook {
 		System.out.print("Enter Last Name: ");
 		String lastName = sc.nextLine();
 		
-		for (int i = 0; i<listOfContacts.size(); i++) {
-			System.out.println("Searching... ");
-			String strFirstName = listOfContacts.get(i).firstName.toUpperCase().trim();
-			String strLastName = listOfContacts.get(i).lastName.toUpperCase().trim();
-			if (strFirstName.equals(firstName.toUpperCase().trim()) && strLastName.equals(lastName.toUpperCase().trim())) {
-				
-				System.out.print("Enter Address: ");
-				listOfContacts.get(i).address = sc.nextLine();
-				
-				System.out.print("Enter City: ");
-				listOfContacts.get(i).city = sc.nextLine();
-				
-				System.out.print("Enter State: ");
-				listOfContacts.get(i).state = sc.nextLine();
-				
-				System.out.print("Enter Email ID: ");
-				listOfContacts.get(i).email = sc.nextLine();
-				
-				System.out.print("Enter Zip: ");
-				listOfContacts.get(i).zip = sc.nextInt();
-				
-				System.out.print("Enter Phone Number: ");
-				listOfContacts.get(i).phoneNumber = sc.nextLong();
-	
-			}
-		}	
+		String key = firstName + " " + lastName;
+		
+		if (HPOfContacts.containsKey(key)) {
+			Contact objCont = HPOfContacts.get(key);
+			
+			System.out.print("Enter Address: ");
+			objCont.address = sc.nextLine();
+			
+			System.out.print("Enter City: ");
+			objCont.city = sc.nextLine();
+			
+			System.out.print("Enter State: ");
+			objCont.state = sc.nextLine();
+			
+			System.out.print("Enter Email ID: ");
+			objCont.email = sc.nextLine();
+			
+			System.out.print("Enter Zip: ");
+			objCont.zip = sc.nextInt();
+			
+			System.out.print("Enter Phone Number: ");
+			objCont.phoneNumber = sc.nextLong();
+		}
 		
 	}
 	
@@ -87,17 +83,18 @@ public class AddressBook {
 	 */
 	public void deleteContact() {
 		Scanner sc = new Scanner(System.in);
-		sc.nextLine();
-		System.out.println("Enter details to delete contact: ");
+		System.out.println("Enter details to edit contact: ");
 		System.out.print("Enter First Name : ");
-		String fName = sc.nextLine();
+		String firstName = sc.nextLine();
 		
-		for (int i = 0; i<listOfContacts.size(); i++) {
-			System.out.println("Searching... ");
-			String strFirstName = listOfContacts.get(i).firstName.toUpperCase().trim();
-			if (strFirstName.equals(fName.toUpperCase().trim())) {
-				listOfContacts.remove(i);
-			}
+		System.out.print("Enter Last Name: ");
+		String lastName = sc.nextLine();
+		
+		String key = firstName + " " + lastName;
+		
+		if (HPOfContacts.containsKey(key)) {
+			
+			HPOfContacts.remove(key);
 			}
 		
 	}
@@ -108,20 +105,16 @@ public class AddressBook {
 	 * Displaying all contacts
 	 */
 	public void displayContacts() {
-		for (int i = 0; i<listOfContacts.size(); i++) {
-			System.out.println("First Name: "+listOfContacts.get(i).firstName);
-			System.out.println("Last Name: "+listOfContacts.get(i).lastName);
-			System.out.println("Address: "+listOfContacts.get(i).address);
-			System.out.println("City: "+listOfContacts.get(i).city);
-			System.out.println("State: "+listOfContacts.get(i).state);
-			System.out.println("Email id: "+listOfContacts.get(i).email);
-			System.out.println("Zip: "+listOfContacts.get(i).zip);
-			System.out.println("Phone Number: "+listOfContacts.get(i).phoneNumber);
-			
-		}
+		for (Contact objContact : HPOfContacts.values()) {
+			System.out.println("First Name: "+objContact.firstName);
+			System.out.println("Last Name: "+objContact.lastName);
+			System.out.println("Address: "+objContact.address);
+			System.out.println("City: "+objContact.city);
+			System.out.println("State: "+objContact.state);
+			System.out.println("Email id: "+objContact.email);
+			System.out.println("Zip: "+objContact.zip);
+			System.out.println("Phone No: "+objContact.phoneNumber);
 	}
 	
-	
-	
-
+	}
 }

@@ -53,7 +53,7 @@ public class AddressBookMain {
 				 * Calling displayContacts method
 				 */
 				objAddressBook.displayContacts();
-				System.out.println("Your contact list is empty");
+				System.out.println("Your contact list is been modified");
 				break;
 			default:
 				System.out.println("Enter your valid choice");
